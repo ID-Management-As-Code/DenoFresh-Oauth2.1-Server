@@ -1,0 +1,42 @@
+import { getHeaders } from './utilities/request.utilities.ts';
+
+const enableSecurity = false;
+const hostname = 'localhost';
+const port = 4701;
+const protocol = enableSecurity ? 'http' : 'https';
+
+const server = Deno.listen({ hostname, port });
+
+console.log(`Server running on: ${protocol}://${hostname}:${port}`);
+
+for await (const connection of server) {
+    serveHttp(connection);
+}
+
+async function serveHttp(conn: Deno.Conn) {
+    const httpConnection = Deno.serveHttp(conn);
+
+    for await (const requestEvent of httpConnection) {
+        const request = requestEvent.request;
+
+        const requestBody = await request.json();
+
+        const requestInfo = {
+            body: requestBody,
+            headers: getHeaders(request.headers),
+            method: request.method,
+            url: request.url
+        };
+
+        const body = `<code><pre>${JSON.stringify(requestInfo, null, 4)}</pre></code>`;
+
+        requestEvent.respondWith(
+            new Response(body, {
+                headers: {
+                    'content-type': 'text/html'
+                },
+                status: 200,
+            }),
+        );
+    }
+}
