@@ -167,5 +167,16 @@ export enum IdTokenClaims {
      * The value is a case-sensitive string and MUST NOT exceed 255 ASCII
      * characters in length.
      */
-    SubjectIdentifier = 'sub'
+    SubjectIdentifier = 'sub',
+
+    /**
+     * Public key used to check the signature of an ID Token issued by a
+     * Self-Issued OpenID Provider.
+     *
+     * @remarks
+     *
+     * __REQUIRED__ if the issuer is a personal, self-hosted OpenID Provider
+     * that issues self-signed ID tokens, otherwise, *OPTIONAL*.
+     */
+    SubjectJsonWebKey = 'sub_jwk'
 }
