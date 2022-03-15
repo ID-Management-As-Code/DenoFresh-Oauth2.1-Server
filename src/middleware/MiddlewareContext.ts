@@ -1,3 +1,5 @@
+import { HttpResponse } from '../http/index.ts';
+
 /**
  * The current context used to manage an HTTP request/response from the server.
  */
@@ -14,5 +16,5 @@ export interface MiddlewareContext {
      *
      * @see {@link Response}
      */
-    response: Response;
+    response: HttpResponse;
 }
