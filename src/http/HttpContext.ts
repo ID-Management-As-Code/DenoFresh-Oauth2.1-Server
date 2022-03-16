@@ -1,15 +1,15 @@
-import { HttpResponse } from '../http/index.ts';
+import type { HttpRequest, HttpResponse } from './index.ts';
 
 /**
  * The current context used to manage an HTTP request/response from the server.
  */
-export interface MiddlewareContext {
+export interface HttpContext {
     /**
      * The HTTP request.
      *
-     * @see {@link Request}
+     * @see {@link HttpRequest}
      */
-    request: Request;
+    request: HttpRequest;
 
     /**
      * The HTTP response.

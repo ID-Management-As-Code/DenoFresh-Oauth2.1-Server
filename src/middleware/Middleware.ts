@@ -1,12 +1,12 @@
-import { MiddlewareContext } from './MiddlewareContext.ts';
-import { RequestCursor } from './RequestCursor.ts';
+import type { HttpContext } from '../http/index.ts';
+import type { RequestCursor } from './index.ts';
 
 /**
  * Represents a middleware function for building a request/response pipeline.
  *
- * @param {MiddlewareContext} context The context of the current request to the
- *                                    server.
- * @param {RequestCursor} next A function which calls the next piece of
- *                             middleware in the pipeline.
+ * @param {HttpContext} context The current request/response to the server.
+ * @param {Middleware} next The next middleware in the pipeline to call.
+ *
+ * @returns A void promise.
  */
-export type Middleware = (context: MiddlewareContext, next: RequestCursor) => Promise<void>;
+export type Middleware = (context: HttpContext, next: RequestCursor) => Promise<void>;
