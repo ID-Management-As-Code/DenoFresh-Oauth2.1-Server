@@ -1,5 +1,6 @@
 import type { HttpContext } from '../http/index.ts';
-import type { Middleware, RequestCursor } from './index.ts';
+import type { Middleware } from './Middleware.ts';
+import type { RequestCursor } from './RequestCursor.ts';
 
 const middlewareFunctions: Middleware[] = [];
 

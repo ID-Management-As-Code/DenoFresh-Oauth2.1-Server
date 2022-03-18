@@ -1,5 +1,28 @@
 import { HttpContext } from '../http/index.ts';
 import { Middleware, RequestCursor } from '../middleware/index.ts';
+import { Endpoint, EndpointHandler } from './index.ts';
+
+import { PingEndpoint } from './handlers/PingEndpoint.ts';
+
+const registeredEndpoints: Endpoint[] = [
+    new PingEndpoint()
+];
+
+/**
+ * Maps the array of @see {@link Endpoint}s to a record object for faster retrieval.
+ * @returns
+ */
+function buildEndpoints(): Record<string, EndpointHandler> {
+    const data: Record<string, EndpointHandler> = {};
+
+    for (const endpoint of registeredEndpoints) {
+        data[endpoint.path] = endpoint.handler;
+    }
+
+    return data;
+}
+
+const endpoints = buildEndpoints();
 
 /**
  * Processes requests for various endpoints in the application.
@@ -9,31 +32,16 @@ import { Middleware, RequestCursor } from '../middleware/index.ts';
  *                       on.
  */
 export const EndpointsMiddleware: Middleware = async (context: HttpContext, next: RequestCursor) => {
-    console.log('pre endpoint middleware');
-    await next();
-    console.log('post endpoint middleware');
-}
+    const requestUrl = new URL(context.request.url);
+    const requestedEndpoint = endpoints[requestUrl.pathname];
 
-export const EndpointsMiddleware1: Middleware = async (context: HttpContext, next: RequestCursor) => {
-    console.log('pre endpoint1 middleware');
-    await next();
-    console.log('post endpoint1 middleware');
-}
+    if (!requestedEndpoint) {
+        context.response.status = 404;
+    } else {
+        const endpointResponse = requestedEndpoint(context.request);
 
-export const EndpointsMiddleware2: Middleware = async (context: HttpContext, next: RequestCursor) => {
-    console.log('pre endpoint2 middleware');
-    await next();
-    console.log('post endpoint2 middleware');
-}
+        context.response = endpointResponse;
+    }
 
-export const EndpointsMiddleware3: Middleware = async (context: HttpContext, next: RequestCursor) => {
-    console.log('pre endpoint3 middleware');
     await next();
-    console.log('post endpoint3 middleware');
-}
-
-export const EndpointsMiddleware4: Middleware = async (context: HttpContext, next: RequestCursor) => {
-    console.log('pre endpoint4 middleware');
-    await next();
-    console.log('post endpoint4 middleware');
 }

@@ -1,5 +1,5 @@
 import type { HttpContext } from '../http/index.ts';
-import type { RequestCursor } from './index.ts';
+import type { RequestCursor } from './RequestCursor.ts';
 
 /**
  * Represents a middleware function for building a request/response pipeline.

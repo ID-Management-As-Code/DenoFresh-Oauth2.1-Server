@@ -1,6 +1,6 @@
 import { serveTls } from '../deps.ts';
 import { runMiddleware } from '../middleware/index.ts';
-import { configureMiddleware } from './index.ts';
+import { configureMiddleware } from './configureMiddleware.ts';
 
 /**
  * Runs the @see {@link serveTls} command to serve up content over HTTPS.
