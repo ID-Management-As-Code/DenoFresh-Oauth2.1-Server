@@ -1,4 +1,5 @@
-import type { HttpRequest, HttpResponse } from './index.ts';
+import type { HttpRequest } from './HttpRequest.ts';
+import type { HttpResponse } from './HttpResponse.ts';
 
 /**
  * The current context used to manage an HTTP request/response from the server.
