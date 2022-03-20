@@ -2,7 +2,7 @@
  * Claims used within the ID token for all OAuth 2.0 flows initiated by an
  * OpenID Connect provider.
  */
-export enum IdTokenClaims {
+export enum IdTokenClaim {
     /**
      * *OPTIONAL*. Its value is the `base64url` encoding of the left-most half
      * of the hash of the octets of the ASCII representation of the

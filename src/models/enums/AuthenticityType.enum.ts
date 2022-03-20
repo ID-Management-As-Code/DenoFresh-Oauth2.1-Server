@@ -2,7 +2,7 @@
  * The type of client interacting with the authorization serfver, based on
  * their ability to authenticate securely with the authorization server.
  */
-export enum ClientType {
+export enum AuthenticityType {
     /**
      * Clients capable of maintaining the confidentiality of their credentials
      * or capable of secure client authentication using other means.

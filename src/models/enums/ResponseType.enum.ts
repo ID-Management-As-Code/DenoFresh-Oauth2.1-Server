@@ -24,13 +24,13 @@ export enum ResponseType {
     HybridWithId = 'code id_token',
 
     /**
-     * Use the hybrid flow to return an authorization code and access token.
-     */
-    HybridWithToken = 'code token',
-
-    /**
      * Use the hybrid flow to return an authorization code, ID and access
      * token.
      */
-    HybridWithIdAndToken = 'code id_token token'
+    HybridWithIdAndToken = 'code id_token token',
+
+    /**
+     * Use the hybrid flow to return an authorization code and access token.
+     */
+    HybridWithToken = 'code token'
 }

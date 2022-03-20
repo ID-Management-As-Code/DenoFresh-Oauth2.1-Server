@@ -2,7 +2,7 @@
  * Names of properties used when making authentication requests to the
  * authorization server.
  */
-export enum AuthenticationProperties {
+export enum AuthenticationProperty {
     /**
      * *OPTIONAL*. Requested Authentication Context Class Reference values.
      * Space-separated string that specifies the `acr` values that the

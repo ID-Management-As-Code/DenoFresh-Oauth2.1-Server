@@ -3,6 +3,7 @@ export * from './badRequest.ts';
 // export * from './CreatedAction.ts';
 // export * from './ForbiddenAction.ts';
 export * from './internalServerError.ts';
+export * from './json.ts';
 // export * from './NoContentAction.ts';
 export * from './notFound.ts';
 // export * from './NotImplementedAction.ts';

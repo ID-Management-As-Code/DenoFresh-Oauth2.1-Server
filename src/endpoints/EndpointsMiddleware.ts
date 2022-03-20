@@ -3,9 +3,14 @@ import { Middleware, RequestCursor } from '../middleware/index.ts';
 import { Endpoint, EndpointHandler } from './index.ts';
 
 import { PingEndpoint } from './handlers/PingEndpoint.ts';
+import { WellKnownOpenIdConfigurationEndpoint } from './handlers/WellKnownOpenIdConfigurationEndpoint.ts';
 
 const registeredEndpoints: Endpoint[] = [
-    new PingEndpoint()
+    // Maintenance
+    new PingEndpoint(),
+
+    // OpenID Connect
+    new WellKnownOpenIdConfigurationEndpoint()
 ];
 
 /**

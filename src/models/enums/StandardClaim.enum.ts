@@ -6,7 +6,7 @@
  * They can be requested to be returned either in the UserInfo Response, or in
  * the ID Token
  */
-export enum StandardClaims {
+export enum StandardClaim {
     /**
      * End-User's preferred postal address.
      *
