@@ -1,3 +1,4 @@
+import { getAppSettings } from '../configuration/loadAppSettings.ts';
 import { serveTls } from '../deps.ts';
 import { runMiddleware } from '../middleware/index.ts';
 import { configureMiddleware } from './configureMiddleware.ts';
@@ -6,11 +7,13 @@ import { configureMiddleware } from './configureMiddleware.ts';
  * Runs the @see {@link serveTls} command to serve up content over HTTPS.
  */
 export function runHttpsServer() {
+    const appSettings = getAppSettings();
+
     const serverOptions = {
-        certFile: './certificates/cert.pem',
-        hostname: 'localhost',
-        keyFile: './certificates/key.pem',
-        port: 4701
+        certFile: appSettings.server?.publicCertificate,
+        hostname: appSettings.server?.hostname || 'localhost',
+        keyFile: appSettings.server?.privateKey,
+        port: appSettings.server?.port || 4701
     };
 
     configureMiddleware();
@@ -19,7 +22,7 @@ export function runHttpsServer() {
         async (request: Request) => {
             const response = await runMiddleware(request);
 
-             return response;
+            return response;
         },
         serverOptions
     );

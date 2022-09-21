@@ -16,7 +16,7 @@ async function executeMiddleware(context: HttpContext, next: RequestCursor) {
     // to allow for pre and post operations during the request pipeline.
     // My understanding is that building the middleware pipeline must start from
     // the last registered middleware function because the pipeline is being
-    // built from the inside out, hense, if we used reduce() the functions would
+    // built from the inside out, hence, if we used reduce() the functions would
     // be called last-in first-out.
     const run = middlewareFunctions.reduceRight(
         (previous, current) => async () => {

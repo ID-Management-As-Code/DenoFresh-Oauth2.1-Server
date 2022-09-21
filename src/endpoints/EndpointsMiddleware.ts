@@ -32,9 +32,8 @@ const endpoints = buildEndpoints();
 /**
  * Processes requests for various endpoints in the application.
  *
- * @param request The HTTP request to process.
- * @param connectionInfo Information about the connection the request arrived
- *                       on.
+ * @param context The current HTTP context.
+ * @param next The next middleware in the pipeline to execute.
  */
 export const EndpointsMiddleware: Middleware = async (context: HttpContext, next: RequestCursor) => {
     const requestUrl = new URL(context.request.url);
