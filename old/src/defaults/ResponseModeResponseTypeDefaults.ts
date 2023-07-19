@@ -1,4 +1,4 @@
-import { ResponseMode, ResponseType } from '../enums/index.ts';
+import { ResponseMode, ResponseType } from '~/models/enums/index.ts';
 
 export default {
     [ResponseType.AuthorizationCode]: ResponseMode.Query,

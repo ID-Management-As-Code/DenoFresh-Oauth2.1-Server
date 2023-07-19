@@ -1,0 +1,16 @@
+{
+    "fmt": {
+        "options": {
+            "indentWidth": 4,
+            "semiColons": true,
+            "singleQuote": true
+        }
+    },
+    "imports": {
+        "std/": "https://deno.land/std@0.194.0/",
+        "~/": "./src/"
+    },
+    "tasks": {
+        "dev": "deno run --allow-read --allow-net --watch src/main.ts"
+    }
+}

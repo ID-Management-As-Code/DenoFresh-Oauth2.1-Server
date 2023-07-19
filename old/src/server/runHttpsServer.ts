@@ -1,13 +1,13 @@
 import { getAppSettings } from '../configuration/loadAppSettings.ts';
-import { serveTls } from '../deps.ts';
+import { serveTls } from 'std/http/server.ts';
 import { runMiddleware } from '../middleware/index.ts';
 import { configureMiddleware } from './configureMiddleware.ts';
 
 /**
  * Runs the @see {@link serveTls} command to serve up content over HTTPS.
  */
-export function runHttpsServer() {
-    const appSettings = getAppSettings();
+export async function runHttpsServer() {
+    const appSettings = await getAppSettings();
 
     const serverOptions = {
         certFile: appSettings.server?.publicCertificate,
