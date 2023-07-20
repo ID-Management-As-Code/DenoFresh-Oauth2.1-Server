@@ -13,7 +13,7 @@ export const DurationMiddleware: Middleware = async (context: HttpContext, next:
     const updatedHeaders: HeadersInit = {
         ...context.response.headers,
         'Request-Duration': duration.toString() + 'ms'
-    }
+    };
 
     context.response.headers = updatedHeaders;
 }
