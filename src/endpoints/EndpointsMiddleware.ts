@@ -1,15 +1,17 @@
-import { HttpContext } from '../http/index.ts';
-import { Middleware, RequestCursor } from '../middleware/index.ts';
+import { HttpContext } from "~/http/index.ts";
+import { Middleware, RequestCursor } from "~/middleware/index.ts";
 import { Endpoint, EndpointHandler } from './index.ts';
 
-import { PingEndpoint } from './handlers/PingEndpoint.ts';
-import { WellKnownOpenIdConfigurationEndpoint } from './handlers/WellKnownOpenIdConfigurationEndpoint.ts';
+import { AuthorizationEndpoint } from '~/endpoints/handlers/AuthorizationEndpoint.ts';
+import { PingEndpoint } from "~/endpoints/handlers/PingEndpoint.ts";
+import { WellKnownOpenIdConfigurationEndpoint } from "~/endpoints/handlers/WellKnownOpenIdConfigurationEndpoint.ts";
 
 const registeredEndpoints: Endpoint[] = [
     // Maintenance
     new PingEndpoint(),
 
     // OpenID Connect
+    new AuthorizationEndpoint(),
     new WellKnownOpenIdConfigurationEndpoint()
 ];
 
