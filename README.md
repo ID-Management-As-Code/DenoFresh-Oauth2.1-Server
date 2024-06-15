@@ -1,6 +1,6 @@
 # Deno ID Server
 
-An OAuth 2.1 server made using Deno.
+An OAuth 2.1 server made using Deno Fresh.
 
 # Branching Conventions
 
