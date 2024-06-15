@@ -1,6 +1,6 @@
 # Deno ID Server
 
-An ID server made using Deno.
+An ID server framework made for Deno Fresh.
 
 # Branching Conventions
 
